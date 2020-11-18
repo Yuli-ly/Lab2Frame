@@ -14,10 +14,12 @@ public class Formula extends JFrame {
     private JTextField input_y = new JTextField("0");
     private JTextField input_z = new JTextField("0");
     private JTextField result = new JTextField("0");
+    private JTextField memory = new JTextField("0");
     private JLabel label1 = new JLabel("  Введите х:"); // создаем подписи к текстовым полям
     private JLabel label2 = new JLabel("  Введите y:");
     private JLabel label3 = new JLabel("  Введите z:");
     private JLabel label4 = new JLabel("  Результат:");
+    private JLabel label5 = new JLabel("  Память:");
     private JRadioButton radio1 = new JRadioButton("Формула 1"); // создаем радиокнопки
     private JRadioButton radio2 = new JRadioButton("Формула 2");
     Double resultat = 0.0;
@@ -38,7 +40,7 @@ public class Formula extends JFrame {
         this.setBounds(200, 200, 350, 300); // размеры окна
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // обработка закрытия окна
         Container container = this.getContentPane(); // контейнер под содержимое
-        container.setLayout(new GridLayout(7, 2, 2, 2)); // в виде таблицы
+        container.setLayout(new GridLayout(8, 2, 2, 2)); // в виде таблицы
         // добавляем содержимое
         ButtonGroup group = new ButtonGroup(); // группируем радиокнопки
         group.add(radio1);
@@ -58,6 +60,9 @@ public class Formula extends JFrame {
         container.add(label4);
         container.add(result);
         result.setBackground(Color.MAGENTA);
+        container.add(label5);
+        container.add(memory);
+        memory.setBackground(Color.LIGHT_GRAY);
         ButtonGroup group1 = new ButtonGroup();
         group1.add(button1);
         group1.add(button2);
@@ -91,22 +96,22 @@ public class Formula extends JFrame {
     }
     class ButtonEvent2 implements ActionListener { // кнопка Очистить
         public void actionPerformed (ActionEvent i) {
-            input_x.setText("");
-            input_y.setText("");
-            input_z.setText("");
-            result.setText("");
+            input_x.setText("0");
+            input_y.setText("0");
+            input_z.setText("0");
+            result.setText("0");
         }
     }
     class ButtonEvent3 implements ActionListener { // кнопка М+
         public void actionPerformed (ActionEvent i) {
             sum = sum + resultat;
-            result.setText(sum.toString());
+            memory.setText(sum.toString());
         }
     }
     class ButtonEvent4 implements ActionListener { // кнопка МС
         public void actionPerformed (ActionEvent i) {
             sum = 0.0;
-            result.setText("");
+            memory.setText("0");
         }
     }
 
